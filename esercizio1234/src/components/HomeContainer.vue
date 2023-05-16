@@ -1,15 +1,17 @@
 <script>
+import {defineComponent} from 'vue'
 import axios from "axios";
-import {defineComponent} from "vue";
+import MovieMiniCard from "@/components/MovieMiniCard.vue";
 
 export default defineComponent({
     name: "HomeContainer",
-    data() {
+    components: {MovieMiniCard},
+    data(){
         return {
             movie: {}
         }
     },
-    methods: {
+    methods:{
         getLastMovie(){
             axios.get('http://localhost:3000/movies?last').then(response=>{
                     const movie = response.data
@@ -19,24 +21,25 @@ export default defineComponent({
                         movie.poster = "https://www.stillisolutions.com/wp-content/uploads/2017/09/no-image-box-300x155.png";
                     }
                     this.movie = movie;
-                }
+            }
             ).catch(err=>{
                 console.log(err)
             })
         },
-        init(){
-            this.getLastMovie();
-        }
+        replaceByDefault(event) {
+            event.target.src = "https://www.stillisolutions.com/wp-content/uploads/2017/09/no-image-box-300x155.png"
+        },
     },
-    mounted() {
-        this.init();
-    },
+    mounted(){
+        this.getLastMovie();
+    }
 })
 </script>
 
 <template>
     <div class="homeContainer">
         <div class="last">
+<!--            <div class="coverImage"><img src="https://aforismi.meglio.it/img/film/armageddon.jpg" class="card-img" alt=""></div>-->
             <div class="coverImage"><img :src="movie.poster" class="card-img" alt="" @error="replaceByDefault"></div>
             <div class="pattern"></div>
             <div class="coverText">
@@ -47,9 +50,18 @@ export default defineComponent({
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="container-fluid">
+            <MovieMiniCard id="5692a15524de1e0ce2dfcfa3"></MovieMiniCard>
+            <MovieMiniCard id="5692a56f24de1e0ce2dfdd0b"></MovieMiniCard>
+            <MovieMiniCard id="5692a57524de1e0ce2dfdd14"></MovieMiniCard>
+        </div>
+
+    </div>
+
 </template>
 
-<style scoped>
+<style>
 .homeContainer{
     margin-bottom: 200px;
 }
@@ -120,4 +132,5 @@ export default defineComponent({
 .filmCardTxt{
     padding: 2px;
 }
+
 </style>

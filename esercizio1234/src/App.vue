@@ -9,13 +9,10 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="container-fluid">
-        <h1>Amazing Movies</h1>
-    </div>
-    <NavBar/>
-    <router-view/>
+  <NavBar></NavBar>
+  <RouterView></RouterView>
 </template>
 
-<style>
+<style scoped>
 
 </style>
