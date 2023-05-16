@@ -4,8 +4,8 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap"
-import Home from "@/components/Home.vue";
-import Movies from "@/components/Movies.vue";
+import Home from "@/pages/Home.vue";
+import Movies from "@/pages/Movies.vue";
 
 const app = createApp(App);
 

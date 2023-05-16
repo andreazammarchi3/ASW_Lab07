@@ -10,9 +10,10 @@
                     <nav-button route-name="Movies" @counter-clicked="onChildClicked"></nav-button>
                 </ul>
             </div>
+            <div>Total click: {{ count }}</div>
         </div>
     </nav>
-    <div>Total click: {{ count }}</div>
+
 </template>
 
 <script>
